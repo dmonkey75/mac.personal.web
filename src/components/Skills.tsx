@@ -1,27 +1,34 @@
 import React from 'react';
+import { Theme } from '@material-ui/core';
 import { makeStyles, useTheme, createStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Bar } from './../elements';
+import { useInView } from 'react-intersection-observer';
+import { IScreen } from '../elements/Interfaces';
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
     createStyles({
         root: {
-            display: (isMobile) => isMobile ? 'inline' : 'flex',
+            display: (props) => props.isMobile ? 'inline' : 'flex',
             overflow: 'hidden'
         },
 
         titleContainer: {
             display: 'flex',
-            justifyContent: (isMobile) => isMobile ? 'center' : 'flex-end',
-            flex: (isMobile) => isMobile ? '' : '30%',
+            justifyContent: (props) => props.isMobile ? 'center' : 'flex-end',
+            flex: (props) => props.isMobile ? '' : '30%',
 
-            paddingRight: (isMobile) => isMobile ? 0 : theme.spacing(4),
+            paddingRight: (props) => props.isMobile ? 0 : theme.spacing(4),
         },
 
         title: {
             paddingBottom: theme.spacing(3),
             position: 'relative',
+
+            paddingTop: theme.spacing(4),
+            transform: (props) => props.inView ? `translateY(${theme.spacing(4) * -1}px)` : '',
+            transition: "1s",
 
             "&:before": {
                 content: '""',
@@ -31,17 +38,17 @@ const useStyles = makeStyles(theme =>
                 margin: 'auto',
                 left: '25%',
                 borderBottom: `5px solid ${theme.palette.primary.dark}`,
-                visibility: (isMobile) => isMobile ? '' : 'hidden'
+                visibility: (props) => props.isMobile ? 'visible' : 'hidden'
             }
         },
 
         content: {
-            paddingTop: (isMobile) => isMobile ? theme.spacing(4) : 0,
-            margin: (isMobile) => isMobile ? theme.spacing(2) : 0,
-            borderLeft: (isMobile) => isMobile ? 'none' : `5px solid ${theme.palette.primary.dark}`,
-            paddingLeft: (isMobile) => isMobile ? 0 : theme.spacing(4),
+            //paddingTop: (props) => props.isMobile ? theme.spacing(4) : 0,
+            margin: (props) => props.isMobile ? theme.spacing(2) : 0,
+            borderLeft: (props) => props.isMobile ? 'none' : `5px solid ${theme.palette.primary.dark}`,
+            paddingLeft: (props) => props.isMobile ? 0 : theme.spacing(4),
 
-            flex: (isMobile) => isMobile ? '' : '70%',
+            flex: (props) => props.isMobile ? '' : '70%',
 
             "& > :not(first-child)": {
                 paddingBottom: theme.spacing(4)
@@ -70,20 +77,29 @@ const useStyles = makeStyles(theme =>
         },
 
         bar: {
-            flex: '70%',
-
+            flex: '70%', 
         },
 
     }));
 
 function Skills(props: any) {
-
+    const [ref, inView, entry] = useInView({
+        /* Optional options */
+        threshold: 0,
+    }) 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
-    const classes = useStyles(isMobile);
+
+    const params: IScreen = {
+        isMobile: isMobile,
+        inView: inView
+    };
+
+    const classes = useStyles(params);
 
     return (
         <div className={classes.root} id='skills'>
+            <div ref={ref} />
             <div className={classes.titleContainer}>
                 <div className={classes.title}>
                     <Typography variant='h4'>SKILLS</Typography>

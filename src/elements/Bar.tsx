@@ -1,32 +1,52 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { IBar } from './Interfaces';
+import { useInView } from 'react-intersection-observer';
 
-const useStyles = makeStyles(theme => ({
-        bar: { 
+interface IParam {
+    bar: IBar,
+    inView: boolean
+}
+
+const useStyles = makeStyles<Theme, IParam>((theme: Theme) =>
+    createStyles({
+        bar: {
             width: '100%',
             height: theme.spacing(1.5),
-            backgroundColor: theme.palette.grey[300], 
-            borderRadius: 12, 
+            backgroundColor: theme.palette.grey[300],
+            borderRadius: 12,
         },
 
-        progress: (value: number) => ({
-            width: `${value}%`, 
+        progress: { 
             height: theme.spacing(1.5),
             backgroundColor: theme.palette.primary.light,
-            transition: "0.4s",
-            borderRadius: 12, 
-        }), 
-    }));
+            transition: "1s",
+            borderRadius: 12,
+            width: (props) => props.inView ? `${props.bar.value}%`: 0, 
+        },
+    })); 
 
 function Bar(props: IBar) {
 
-    const classes = useStyles(props.value);
+    const [ref, inView, entry] = useInView({
+        /* Optional options */
+        threshold: 0,
+    })
 
-    return ( 
+    const params: IParam = {
+        bar: props,
+        inView: inView
+    };
+
+    //const classes = useStyles(props.value);
+    const classes = useStyles(params);
+
+    return (
         <div className={classes.bar}>
+            <div ref={ref} />
             <div className={classes.progress} />
-        </div> 
+        </div>
     );
 }
 
