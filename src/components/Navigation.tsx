@@ -114,8 +114,8 @@ function Navigation(props: any) {
                 <ul>
                     <li><a href="#about" onClick={() => { setToggle(!toggle) }}>ABOUT</a></li>
                     <li><a href="#skills" onClick={() => { setToggle(!toggle) }}>SKILLS</a></li>
-                    <li><a href="#" onClick={() => { setToggle(!toggle) }}>WORKS</a></li>
-                    <li><a href="#" onClick={() => { setToggle(!toggle) }}>CONTACT</a></li>
+                    <li><a href="#experience" onClick={() => { setToggle(!toggle) }}>EXPERIENCE</a></li>
+                    <li><a href="#contact" onClick={() => { setToggle(!toggle) }}>CONTACT</a></li>
                     <li>
                         <div className={classes.socialIcons}>
                             <a href="/"><FontAwesomeIcon icon={faLinkedin} size="lg" /></a>

@@ -6,12 +6,21 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Bar } from './../elements';
 import { useInView } from 'react-intersection-observer';
 import { IScreen } from '../elements/Interfaces';
+import Container from './Container';
 
 const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
     createStyles({
         root: {
-            display: (props) => props.isMobile ? 'inline' : 'flex',
-            overflow: 'hidden'
+            backgroundColor: "#F5F5F5",
+        },
+
+        wrapper: {
+            display: (props) => props.isMobile ? 'block' : 'flex',
+            overflow: 'hidden',
+
+            paddingTop: theme.spacing(16),
+            transform: (props) => props.inView ? `translateY(${theme.spacing(4) * -1}px)` : '',
+            transition: "1s",
         },
 
         titleContainer: {
@@ -26,9 +35,9 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
             paddingBottom: theme.spacing(3),
             position: 'relative',
 
-            paddingTop: theme.spacing(4),
-            transform: (props) => props.inView ? `translateY(${theme.spacing(4) * -1}px)` : '',
-            transition: "1s",
+            // paddingTop: (props) => props.isMobile ? theme.spacing(8) : theme.spacing(4),
+            // transform: (props) => props.inView ? `translateY(${theme.spacing(4) * -1}px)` : '',
+            // transition: "1s",
 
             "&:before": {
                 content: '""',
@@ -43,11 +52,10 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
         },
 
         content: {
-            //paddingTop: (props) => props.isMobile ? theme.spacing(4) : 0,
+            paddingTop: (props) => props.isMobile ? theme.spacing(4) : 0,
             margin: (props) => props.isMobile ? theme.spacing(2) : 0,
             borderLeft: (props) => props.isMobile ? 'none' : `5px solid ${theme.palette.primary.dark}`,
             paddingLeft: (props) => props.isMobile ? 0 : theme.spacing(4),
-
             flex: (props) => props.isMobile ? '' : '70%',
 
             "& > :not(first-child)": {
@@ -77,7 +85,7 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
         },
 
         bar: {
-            flex: '70%', 
+            flex: '70%',
         },
 
     }));
@@ -86,7 +94,7 @@ function Skills(props: any) {
     const [ref, inView, entry] = useInView({
         /* Optional options */
         threshold: 0,
-    }) 
+    })
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
@@ -99,225 +107,229 @@ function Skills(props: any) {
 
     return (
         <div className={classes.root} id='skills'>
-            <div ref={ref} />
-            <div className={classes.titleContainer}>
-                <div className={classes.title}>
-                    <Typography variant='h4'>SKILLS</Typography>
-                </div>
-            </div>
+            <Container>
+                <div className={classes.wrapper}>
+                    <div ref={ref} />
+                    <div className={classes.titleContainer}>
+                        <div className={classes.title}>
+                            <Typography variant='h4'>SKILLS</Typography>
+                        </div>
+                    </div>
 
-            <div className={classes.content}>
-                <div className={classes.group}>
-                    <Typography variant="h6" >
-                        Frameworks & Libraries
+                    <div className={classes.content}>
+                        <div className={classes.group}>
+                            <Typography variant="h6" >
+                                Frameworks & Libraries
+                            </Typography>
+
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    C#
+                                </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={80} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    Typescript
+                                </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={70} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    ASP.Net Core
+                                </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={80} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    MS SQL
+                                </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={85} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    ReactJS
+                                </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={65} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    EF Core
+                                </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={80} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    CSS
+                                </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={70} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    React Hooks
+                                </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={65} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    Redux
+                                </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={65} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    Serilog
+                                </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={70} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    Mocking (Moq)
+                        </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={80} />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={classes.group}>
+                            <Typography variant="h6" >
+                                Azure
                     </Typography>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    Web App
+                        </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={80} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    Web Job
+                        </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={80} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    Function App
+                        </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={80} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    Key Vault
+                        </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={75} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    Storage
+                        </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={80} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    Active Directory
+                        </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={75} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    App Insights
+                        </Typography>
+                                <div className={classes.bar}>
+                                    <Bar value={80} />
+                                </div>
+                            </div>
+                        </div>
 
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            C#
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={80} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            Typescript
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={70} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            ASP.Net Core
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={80} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            MS SQL
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={85} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            ReactJS
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={70} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            EF Core
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={80} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            CSS
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={70} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            React Hooks
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={70} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            Redux
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={70} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            Serilog
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={80} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            Mocking (Moq)
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={80} />
-                        </div>
-                    </div>
-                </div>
-
-                <div className={classes.group}>
-                    <Typography variant="h6" >
-                        Azure
+                        <div className={classes.group}>
+                            <Typography variant="h6" >
+                                Tools
                     </Typography>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            Web App
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    VS Studio
                         </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={80} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            Web Job
+                                <div className={classes.bar}>
+                                    <Bar value={80} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    VS Code
                         </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={80} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            Function App
+                                <div className={classes.bar}>
+                                    <Bar value={80} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    Azure Devops
                         </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={80} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            Key Vault
+                                <div className={classes.bar}>
+                                    <Bar value={70} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    SSMS
                         </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={75} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            Storage
+                                <div className={classes.bar}>
+                                    <Bar value={85} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    Postman
                         </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={80} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            Active Directory
+                                <div className={classes.bar}>
+                                    <Bar value={85} />
+                                </div>
+                            </div>
+                            <div className={classes.skill}>
+                                <Typography className={classes.skillName}>
+                                    Git for Windows
                         </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={75} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            App Insights
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={80} />
+                                <div className={classes.bar}>
+                                    <Bar value={80} />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div className={classes.group}>
-                    <Typography variant="h6" >
-                        Tools
-                    </Typography>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            VS Studio
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={80} />
-                        </div>
-                    </div> 
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            VS Code
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={80} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            Azure Devops
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={70} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            SSMS
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={85} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            Postman
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={85} />
-                        </div>
-                    </div>
-                    <div className={classes.skill}>
-                        <Typography className={classes.skillName}>
-                            Git for Windows
-                        </Typography>
-                        <div className={classes.bar}>
-                            <Bar value={80} />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </Container>
         </div>
     );
 }

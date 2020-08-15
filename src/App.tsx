@@ -1,13 +1,13 @@
 import React from 'react';
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Hero, Container, About, Skills, Works, Footer } from './components/index'; 
+import { Hero, About, Skills, Experience, Footer } from './components/index';
 import OpenSansWoff2 from './fonts/open-sans-v17-latin-regular.woff2';
 import OpenSans700Woff2 from './fonts/open-sans-v17-latin-700.woff2';
-import RalewayWoff2 from './fonts/raleway-v17-latin-800.woff2'; 
+import RalewayWoff2 from './fonts/raleway-v17-latin-800.woff2';
 
 const opensans = {
-  fontFamily: 'opensans',  
+  fontFamily: 'opensans',
   fontWeight: 400,
   src: ` 
     url(${OpenSansWoff2}) format('woff2'),
@@ -18,7 +18,7 @@ const opensans = {
 };
 
 const raleway = {
-  fontFamily: 'raleway',  
+  fontFamily: 'raleway',
   fontWeight: 400,
   src: ` 
     url(${RalewayWoff2}) format('woff2')
@@ -49,22 +49,22 @@ let theme = createMuiTheme({
   },
   typography: {
     fontFamily: [
-      'opensans', 
+      'opensans',
       'raleway',
       'sans-serif'
     ].join(','),
-    h1: { 
+    h1: {
       fontFamily: 'raleway'
     },
-    h2: { 
+    h2: {
       fontWeight: 700,
       color: '#607d8b'
     },
-    h3: { 
+    h3: {
       fontWeight: 700,
       color: '#607d8b'
     },
-    h4: { 
+    h4: {
       fontWeight: 700,
       color: '#607d8b'
     },
@@ -76,7 +76,7 @@ let theme = createMuiTheme({
       fontWeight: 700,
       color: '#607d8b'
     }
-  }, 
+  },
   overrides: {
     MuiCssBaseline: {
       '@global': {
@@ -93,11 +93,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Hero />
-      <Container>
-        <About />
-        <Skills /> 
-        <Works />
-      </Container>
+      <About />
+      <Skills />
+      <Experience /> 
       <Footer />
     </ThemeProvider>
   );

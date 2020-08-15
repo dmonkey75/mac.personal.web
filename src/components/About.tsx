@@ -5,12 +5,21 @@ import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useInView } from 'react-intersection-observer';
 import { IScreen } from '../elements/Interfaces';
-  
+import Container from './Container';
+
 const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
     createStyles({
         root: {
+            backgroundColor: "#FFFFFF", 
+        },
+
+        wrapper: {
             display: (props) => props.isMobile ? 'block' : 'flex',
             overflow: 'hidden',
+
+            marginTop: theme.spacing(4),
+            transform: (props) => props.inView ? `translateY(${theme.spacing(4) * -1}px)` : '',
+            transition: "1s",
         },
 
         titleContainer: {
@@ -24,10 +33,7 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
         title: {
             paddingBottom: theme.spacing(3),
             position: 'relative',
-            paddingTop: theme.spacing(4),
-            transform: (props) => props.inView ? `translateY(${theme.spacing(4) * -1}px)` : '',
-            transition: "1s",
-
+             
             "&:before": {
                 content: '""',
                 position: 'absolute',
@@ -41,7 +47,7 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
         },
 
         content: {
-            //paddingTop: (props) => props.isMobile ? theme.spacing(4) : 0,
+            paddingTop: (props) => props.isMobile ? theme.spacing(4) : 0,
             margin: (props) => props.isMobile ? theme.spacing(2) : 0,
             borderLeft: (props) => props.isMobile ? 'none' : `5px solid ${theme.palette.primary.dark}`,
             paddingLeft: (props) => props.isMobile ? 0 : theme.spacing(4),
@@ -61,11 +67,11 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
         }
     }));
 
-function About(props: any) { 
+function About(props: any) {
     const [ref, inView, entry] = useInView({
         /* Optional options */
         threshold: 0,
-    }) 
+    })
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
@@ -77,54 +83,58 @@ function About(props: any) {
     const classes = useStyles(params);
 
     return (
-        <div className={classes.root} id='about'> 
-            <div ref={ref} />
-            <div className={classes.titleContainer}> 
-                <div className={classes.title}>
-                    <Typography variant='h4'>ABOUT ME</Typography>
-                </div> 
-            </div>
-
-            <div className={classes.content}>
-                <Typography variant='body1'>
-                    Microsoft Certified Professional with 11 years of solid experience in .Net with two Microsoft certifications (MCTS).
-                    Has strong knowledge in object-oriented programming. Skilled in building API and Web Based applications.
-                    Primary programming language is C#. Proficient in MS SQL and experienced working with Azure and On-Premise environment.
-                    Completed Bachelor of Science  in Computer Science from Notre Dame of Marbel University in 2007.
-                </Typography>
-
-                <div className={classes.certifications}>
-                    <Typography variant="h6" >
-                        Certications
-                    </Typography>
-
-                    <div className={classes.certificationEntry}>
-                        <Typography variant="body1" >
-                            2011.09.27 TS: Accessing Data with Microsoft .Net Framework 4
-                        </Typography>
-
-                        <Typography variant="body1" >
-                            2011.08.12  TS: Windows Applications Development with Microsoft .NET Framework 4
-                        </Typography>
+        <div className={classes.root} id='about'>
+            <Container>
+                <div className={classes.wrapper}>
+                    <div ref={ref} />
+                    <div className={classes.titleContainer}>
+                        <div className={classes.title}>
+                            <Typography variant='h4'>ABOUT ME</Typography>
+                        </div>
                     </div>
 
-                    <Typography variant="h6" >
-                        Certification Shared Access
-                    </Typography>
+                    <div className={classes.content}>
+                        <Typography variant='body1'>
+                            Microsoft Certified Professional with 11 years of solid experience in .Net with two Microsoft certifications (MCTS).
+                            Has strong knowledge in object-oriented programming. Skilled in building API and Web Based applications.
+                            Primary programming language is C#. Proficient in MS SQL and experienced working with Azure and On-Premise environment.
+                            Completed Bachelor of Science  in Computer Science from Notre Dame of Marbel University in 2007.
+                        </Typography>
 
-                    <div className={classes.certificationEntry}>
-                        <Typography variant="body1" >
-                            Transcript Viewing Page : <a href="https://mcp.microsoft.com/Anonymous/Transcript/Validate">Here</a>
-                        </Typography>
-                        <Typography variant="body1" >
-                            Transcript ID : 1230422
-                        </Typography>
-                        <Typography variant="body1" >
-                            Access Code : 09201247388
-                        </Typography>
+                        <div className={classes.certifications}>
+                            <Typography variant="h6" >
+                                Certications
+                            </Typography>
+
+                            <div className={classes.certificationEntry}>
+                                <Typography variant="body1" >
+                                    2011.09.27 TS: Accessing Data with Microsoft .Net Framework 4
+                                </Typography>
+
+                                <Typography variant="body1" >
+                                    2011.08.12  TS: Windows Applications Development with Microsoft .NET Framework 4
+                                </Typography>
+                            </div>
+
+                            <Typography variant="h6" >
+                                Certification Shared Access
+                            </Typography>
+
+                            <div className={classes.certificationEntry}>
+                                <Typography variant="body1" >
+                                    Transcript Viewing Page : <a href="https://mcp.microsoft.com/Anonymous/Transcript/Validate">Here</a>
+                                </Typography>
+                                <Typography variant="body1" >
+                                    Transcript ID : 1230422
+                                </Typography>
+                                <Typography variant="body1" >
+                                    Access Code : 09201247388
+                                </Typography>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Container>
         </div>
     );
 }
