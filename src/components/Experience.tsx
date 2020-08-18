@@ -24,8 +24,8 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
         wrapper: {
             display: (props) => props.isMobile ? 'block' : 'flex',
             overflow: 'hidden',
-
-            paddingTop: theme.spacing(24),
+ 
+            paddingTop: (props) => props.isMobile ? theme.spacing(16) : theme.spacing(24),
             transform: (props) => props.inView ? `translateY(${theme.spacing(4) * -1}px)` : '',
             transition: "1s",
         },
@@ -41,7 +41,7 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
         title: {
             paddingBottom: theme.spacing(3),
             position: 'relative',
-            marginTop: theme.spacing(-12),
+            marginTop: (props) => props.isMobile ? 0 : theme.spacing(-12), 
             "&:before": {
                 content: '""',
                 position: 'absolute',
@@ -55,14 +55,12 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
         },
 
         content: {
+            paddingTop: (props) => props.isMobile ? theme.spacing(4) : 0,
             margin: (props) => props.isMobile ? theme.spacing(2) : 0,
-            flex: (props) => props.isMobile ? '' : '70%',
-            // borderLeft: (props) => props.isMobile ? 'none' : `5px solid ${theme.palette.primary.dark}`,
-            // paddingLeft: (props) => props.isMobile ? 0 : theme.spacing(4),
+            flex: (props) => props.isMobile ? '' : '70%', 
             
             "& > :not(:last-child)": {
-                //borderLeft: (props) => props.isMobile ? 'none' : `5px solid ${theme.palette.primary.dark}`,
-                borderLeft: `5px solid ${theme.palette.primary.dark}`,
+                borderLeft: (props) => props.isMobile ? 'none' : `5px solid ${theme.palette.primary.dark}`, 
                 paddingLeft: (props) => props.isMobile ? 0 : theme.spacing(4),
             },
 
@@ -103,9 +101,9 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
             color: theme.palette.common.white,
             textAlign: "center",
             position: 'absolute',
-            //marginLeft: theme.spacing(-6.5),
-            marginLeft: (props) => props.isMobile ? 0 : theme.spacing(-6.5),
-            paddingTop: theme.spacing(1)
+            marginLeft: theme.spacing(-6.5), 
+            paddingTop: theme.spacing(1),
+            visibility: (props) => props.isMobile ? 'hidden' : 'visible'
         },
  
         lastCircleItem: { 
