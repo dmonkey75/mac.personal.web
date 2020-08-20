@@ -1,7 +1,7 @@
 import React from 'react';
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Hero, About, Skills, Experience, Footer } from './components/index';
+import { Hero, About, Skills, Experience, Contact, Footer } from './components/index';
 import OpenSansWoff2 from './fonts/open-sans-v17-latin-regular.woff2';
 import OpenSans700Woff2 from './fonts/open-sans-v17-latin-700.woff2';
 import RalewayWoff2 from './fonts/raleway-v17-latin-800.woff2';
@@ -96,6 +96,7 @@ function App() {
       <About />
       <Skills />
       <Experience /> 
+      <Contact />
       <Footer />
     </ThemeProvider>
   );

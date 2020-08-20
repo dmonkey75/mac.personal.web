@@ -10,14 +10,14 @@ import Container from './Container';
 const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
     createStyles({
         root: {
-            backgroundColor: "#FFFFFF", 
+            backgroundColor: theme.palette.common.white,
         },
 
         wrapper: {
             display: (props) => props.isMobile ? 'block' : 'flex',
             overflow: 'hidden',
 
-            marginTop: theme.spacing(4),
+            paddingTop: theme.spacing(16),
             transform: (props) => props.inView ? `translateY(${theme.spacing(4) * -1}px)` : '',
             transition: "1s",
         },
@@ -103,7 +103,7 @@ function About(props: any) {
 
                         <div className={classes.certifications}>
                             <Typography variant="h6" >
-                                Certications
+                                Certifications
                             </Typography>
 
                             <div className={classes.certificationEntry}>

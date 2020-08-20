@@ -11,7 +11,7 @@ import Container from './Container';
 const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
     createStyles({
         root: {
-            backgroundColor: "#F5F5F5",
+            backgroundColor: theme.palette.grey[100],
         },
 
         wrapper: {

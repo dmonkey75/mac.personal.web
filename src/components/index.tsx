@@ -4,6 +4,7 @@ import About from './About';
 import Skills from './Skills';
 import Experience from './Experience';
 import Container from './Container';
+import Contact from './Contact';
 import Footer from './Footer';
 
 export {
@@ -13,5 +14,6 @@ export {
     About,
     Skills,
     Experience,
+    Contact,
     Footer
 }
