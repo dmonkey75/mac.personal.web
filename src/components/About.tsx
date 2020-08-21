@@ -68,7 +68,7 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
     }));
 
 function About(props: any) {
-    const [ref, inView, entry] = useInView({
+    const [ref, inView] = useInView({
         /* Optional options */
         threshold: 0,
     })

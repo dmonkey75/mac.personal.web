@@ -34,11 +34,7 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
         title: {
             paddingBottom: theme.spacing(3),
             position: 'relative',
-
-            // paddingTop: (props) => props.isMobile ? theme.spacing(8) : theme.spacing(4),
-            // transform: (props) => props.inView ? `translateY(${theme.spacing(4) * -1}px)` : '',
-            // transition: "1s",
-
+ 
             "&:before": {
                 content: '""',
                 position: 'absolute',
@@ -91,7 +87,7 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
     }));
 
 function Skills(props: any) {
-    const [ref, inView, entry] = useInView({
+    const [ref, inView] = useInView({
         /* Optional options */
         threshold: 0,
     })

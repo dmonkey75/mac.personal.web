@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios'
 import { Theme } from '@material-ui/core';
 import { makeStyles, useTheme, createStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -10,6 +11,13 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faMapMarker } from '@fortawesome/free-solid-svg-icons';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import EmailValidator from 'email-validator';
+
+function Alert(props: AlertProps) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
     createStyles({
@@ -87,8 +95,14 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
         },
     }));
 
+export interface IMessage {
+    open: boolean,
+    message: string,
+    severity: 'success' | 'error'
+}
+
 function Contact(props: any) {
-    const [ref, inView, entry] = useInView({
+    const [ref, inView] = useInView({
         /* Optional options */
         threshold: 0,
     })
@@ -101,6 +115,43 @@ function Contact(props: any) {
     };
 
     const classes = useStyles(params);
+
+    const [inputs, setInputs] = useState({ name: '', email: '', text: '' })
+
+    const [message, setMessage] = React.useState<IMessage>({ open: false, message: '', severity: 'success' });
+
+    const handleClose = () => {
+        setMessage({ ...message, open: false });
+    };
+
+    const handleChange = async (e: { target: { name: string; value: string } }) => {
+        const { name, value } = e.target
+        setInputs(prev => ({ ...prev, [name]: value }))
+    }
+
+    const handleSubmit = async (
+        e: React.FormEvent<HTMLFormElement>
+    ): Promise<void> => {
+        e.preventDefault();
+
+        const { name, email, text } = inputs
+
+        if (EmailValidator.validate(email)) {
+            axios.post('/sendtome', {
+                email,
+                name,
+                subject: "Inquiry",
+                text: text
+            })
+
+            setMessage({ open: true, message: 'Message succesfully sent.', severity: 'success' });
+
+            setInputs({ name: '', email: '', text: '' })
+        }
+        else {
+            setMessage({ open: true, message: 'Email is not valid.', severity: 'error' });
+        }
+    };
 
     return (
         <div className={classes.root} id='contact'>
@@ -122,24 +173,39 @@ function Contact(props: any) {
                     </div>
 
                     <div className={classes.content}>
-                        <form className={classes.form} noValidate autoComplete="off">
-                            <TextField id="name" label="Name" variant="outlined" />
-                            <TextField id="email" label="Email" variant="outlined" />
+                        <form className={classes.form} autoComplete="off" onSubmit={handleSubmit}>
+                            <TextField name="name" required label="Your Name" variant="outlined" value={inputs.name} onChange={handleChange} />
+                            <TextField name="email" required label="Your Email" variant="outlined" value={inputs.email} onChange={handleChange} />
                             <TextField
-                                id="outlined-multiline-static"
+                                name="text"
+                                required
                                 multiline
                                 rows={8}
                                 label="Your Message"
                                 variant="outlined"
+                                value={inputs.text}
+                                onChange={handleChange}
                             />
 
-                            <Button variant="contained" color="primary">
+                            <Button type="submit" variant="contained" color="primary">
                                 SEND
                             </Button>
                         </form>
                     </div>
                 </div>
             </Container>
+
+            <Snackbar
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                }}
+                autoHideDuration={3000}
+                open={message.open}
+                onClose={handleClose}
+            >
+                <Alert severity={message.severity}>{message.message}</Alert>
+            </Snackbar>
         </div>
     );
 }

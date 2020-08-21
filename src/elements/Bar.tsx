@@ -18,18 +18,18 @@ const useStyles = makeStyles<Theme, IParam>((theme: Theme) =>
             borderRadius: 12,
         },
 
-        progress: { 
+        progress: {
             height: theme.spacing(1.5),
             backgroundColor: theme.palette.primary.light,
             transition: "1s",
             borderRadius: 12,
-            width: (props) => props.inView ? `${props.bar.value}%`: 0, 
+            width: (props) => props.inView ? `${props.bar.value}%` : 0,
         },
-    })); 
+    }));
 
 function Bar(props: IBar) {
 
-    const [ref, inView, entry] = useInView({
+    const [ref, inView] = useInView({
         /* Optional options */
         threshold: 0,
     })
@@ -39,7 +39,6 @@ function Bar(props: IBar) {
         inView: inView
     };
 
-    //const classes = useStyles(props.value);
     const classes = useStyles(params);
 
     return (
