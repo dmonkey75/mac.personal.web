@@ -6,7 +6,7 @@ const port = 4444
 
 app.use(morgan('dev'))
 
-app.use('/sendtome', require('./routes/sendToMe'))
+app.use('/mail', require('./routes/sendMail'))
 
 app.listen(port, () => {
     console.log(`Application is running on ${port}`)

@@ -52,5 +52,8 @@
     "nodemon": "^2.0.4",
     "react-intersection-observer": "^8.26.2"
   },
-  "proxy": "http://localhost:4444/"
+  "proxy": "http://localhost:4444/",
+  "engines": {
+    "node": "10.0"
+  }
 }

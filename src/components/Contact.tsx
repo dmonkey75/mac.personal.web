@@ -137,7 +137,7 @@ function Contact(props: any) {
         const { name, email, text } = inputs
 
         if (EmailValidator.validate(email)) {
-            axios.post('/sendtome', {
+            axios.post('/mail', {
                 email,
                 name,
                 subject: "Inquiry",

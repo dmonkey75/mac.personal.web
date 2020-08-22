@@ -67,6 +67,10 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
             "& >:last-child": {
                 borderLeft: `none`,
                 paddingLeft: (props) => props.isMobile ? 0 : theme.spacing(4),
+            },
+
+            "& > * li": {
+                color: theme.palette.common.white
             }
         },
 
