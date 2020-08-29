@@ -266,7 +266,7 @@ function Works(props: any) {
                             <WhiteTextTypography variant='body1' className={classes.summary}>
                                 Develop windows-based application. Worked with a team and build libraries.
                                 Create Stored Procedure, UDF, Views, UDT, Indices and Triggers and optimize large queries.
-                                Create Reports with Crystal Reports for data presentation. Create web services
+                                Create Reports with Crystal Reports for data presentation. Create soap web services.
                             </WhiteTextTypography>
 
                             <ul>
@@ -281,7 +281,7 @@ function Works(props: any) {
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'>Enhance sql queries performance for large transactions for Accounting system.</WhiteTextTypography>
+                                    <WhiteTextTypography variant='body1'>Enhance sql queries performance for large transactions.</WhiteTextTypography>
                                 </li>
                             </ul>
                             <ul>

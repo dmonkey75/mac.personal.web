@@ -118,7 +118,7 @@ function Navigation(props: any) {
                     <li><a href="#contact" onClick={() => { setToggle(!toggle) }}>CONTACT</a></li>
                     <li>
                         <div className={classes.socialIcons}>
-                            <a href="/"><FontAwesomeIcon icon={faLinkedin} size="lg" /></a>
+                            <a href="https://linkedin.com/in/michaelcajandig"><FontAwesomeIcon icon={faLinkedin} size="lg" /></a>
                             <a href="https://github.com/dmonkey75"><FontAwesomeIcon icon={faGithub} size="lg" /></a>
                         </div>
                     </li>

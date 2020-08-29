@@ -14,13 +14,14 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.primary.light,
         cursor: 'pointer',
 
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('xs')]: {
             flexDirection: 'column',
-            justifyContent: 'flex-start',
+            justifyContent: 'flex-start', 
+            padding: theme.spacing(2)
         },
 
         "& > *": {
-            margin: theme.spacing(2),
+            margin: theme.spacing(1),
         },
 
         "& > :hover": {
@@ -49,7 +50,7 @@ function Footer(props: any) {
 
     return (
         <div className={classes.root}>
-            <Link className={classes.link} underline="none" href="#" onClick={preventDefault}> 
+            <Link className={classes.link} underline="none" href="https://linkedin.com/in/michaelcajandig" onClick={preventDefault}> 
                 <Typography>
                     <FontAwesomeIcon className={classes.socialIcon} icon={faLinkedin} size="lg" />
                     LinkedIn
