@@ -1,5 +1,5 @@
 import React from 'react';
-import { Theme } from '@material-ui/core';
+import { Theme, ThemeProvider } from '@material-ui/core';
 import { makeStyles, withStyles, useTheme, createStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -57,14 +57,16 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
             paddingTop: (props) => props.isMobile ? theme.spacing(8) : 0, 
             flex: (props) => props.isMobile ? '' : '70%',
 
-            "& > :not(:last-child)": {
-                borderLeft: (props) => props.isMobile ? 'none' : `5px solid ${theme.palette.primary.dark}`,
-                paddingLeft: (props) => props.isMobile ? 0 : theme.spacing(4),
+            marginLeft: theme.spacing(2),
+
+            "& > :not(:last-child)": { 
+                paddingLeft: (props) => props.isMobile ? theme.spacing(3) : theme.spacing(4),
+                borderLeft: `5px solid ${theme.palette.primary.dark}`,
             },
 
             "& >:last-child": {
-                borderLeft: `none`,
-                paddingLeft: (props) => props.isMobile ? 0 : theme.spacing(4),
+                borderLeft: `none`,  
+                paddingLeft: (props) => props.isMobile ? theme.spacing(4) : theme.spacing(4),
             },
 
             "& > * li": {
@@ -106,14 +108,14 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
             background: theme.palette.primary.dark,
             color: theme.palette.common.white,
             textAlign: "center",
-            position: 'absolute',
-            marginLeft: theme.spacing(-6.5),
-            paddingTop: theme.spacing(1),
-            visibility: (props) => props.isMobile ? 'hidden' : 'visible'
+            position: 'absolute', 
+            paddingTop: theme.spacing(1),  
+            marginLeft:  (props) => props.isMobile ? theme.spacing(-5.5) : theme.spacing(-6.5),
+            marginTop: (props) => props.isMobile ? theme.spacing(-3.5) : 0,
         },
 
-        lastCircleItem: {
-            marginLeft: theme.spacing(-6),
+        lastCircleItem: { 
+            marginLeft: (props) => props.isMobile ? theme.spacing(-6) : theme.spacing(-6),
         },
 
         summary: {
@@ -176,12 +178,12 @@ function Works(props: any) {
                             </ul>
                             <ul>
                                 <li>
-                                    <GreyTextTypography variant='body1' className={classes.items}>Assigned at company's office in Indiana, US in 2016 & 2018 for short term assignment for project handover and to continue develop and support legacy systems.</GreyTextTypography>
+                                    <GreyTextTypography variant='body1' className={classes.items}>Assigned at company's office in Indiana, US in 2016 & 2018 for short term assignment, project handover and to continue develop and support legacy systems.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <GreyTextTypography variant='body1' className={classes.items}>Assigned at company's headquarters in Denmark in 2017 & 2019 for short term assignment for project handover and to kick off new azure based projects.</GreyTextTypography>
+                                    <GreyTextTypography variant='body1' className={classes.items}>Assigned at company's headquarters in Denmark in 2017 & 2019 for short term assignment, project handover and to kick off new azure based projects.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
