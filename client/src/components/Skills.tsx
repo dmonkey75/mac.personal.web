@@ -7,11 +7,17 @@ import { Bar } from './../elements';
 import { useInView } from 'react-intersection-observer';
 import { IScreen } from '../elements/Interfaces';
 import Container from './Container';
+import CSharp from './../images/csharp-gray.png';
 
 const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
     createStyles({
-        root: {
-            backgroundColor: theme.palette.grey[100],
+        root: { 
+            backgroundImage: `url(${CSharp})`,
+            height: '100%',
+            backgroundAttachment: 'fixed',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: (props) => props.isMobile ? '50%' : '30%', 
         },
 
         wrapper: {
@@ -34,7 +40,7 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
         title: {
             paddingBottom: theme.spacing(3),
             position: 'relative',
- 
+
             "&:before": {
                 content: '""',
                 position: 'absolute',
@@ -48,7 +54,7 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
         },
 
         content: {
-            paddingTop: (props) => props.isMobile ? theme.spacing(4) : 0, 
+            paddingTop: (props) => props.isMobile ? theme.spacing(4) : 0,
             borderLeft: (props) => props.isMobile ? 'none' : `5px solid ${theme.palette.primary.dark}`,
             paddingLeft: (props) => props.isMobile ? 0 : theme.spacing(4),
             flex: (props) => props.isMobile ? '' : '70%',

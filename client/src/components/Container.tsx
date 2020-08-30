@@ -8,8 +8,8 @@ const useStyles = makeStyles(theme => ({
         maxWidth: 850,
  
         [theme.breakpoints.down('sm')]: {
-            paddingLeft: theme.spacing(4),
-            paddingRight: theme.spacing(4),
+            paddingLeft: theme.spacing(2),
+            paddingRight: theme.spacing(2),
         },
 
         "& > *": {

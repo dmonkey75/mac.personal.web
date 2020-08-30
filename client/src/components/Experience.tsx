@@ -7,10 +7,10 @@ import { useInView } from 'react-intersection-observer';
 import { IScreen } from '../elements/Interfaces';
 import Container from './Container';
 import clsx from 'clsx';
-
-const WhiteTextTypography = withStyles((theme: Theme) => ({
+  
+const GreyTextTypography = withStyles((theme: Theme) => ({
     root: {
-        color: theme.palette.common.white
+        color: theme.palette.grey[300]
     }
 }))(Typography);
 
@@ -54,7 +54,7 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
         },
 
         content: {
-            paddingTop: (props) => props.isMobile ? theme.spacing(4) : 0, 
+            paddingTop: (props) => props.isMobile ? theme.spacing(8) : 0, 
             flex: (props) => props.isMobile ? '' : '70%',
 
             "& > :not(:last-child)": {
@@ -68,7 +68,7 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
             },
 
             "& > * li": {
-                color: theme.palette.common.white
+                color: theme.palette.grey[300]
             }
         },
 
@@ -80,9 +80,11 @@ const useStyles = makeStyles<Theme, IScreen>((theme: Theme) =>
             paddingBottom: 0,
         },
 
-        year: {
-            color: (props) => props.isMobile ? theme.palette.primary.main : theme.palette.common.white,
-            fontWeight: (props) => props.isMobile ? theme.typography.fontWeightBold : theme.typography.fontWeightRegular,
+        year: { 
+            color: (props) => props.isMobile ? theme.palette.primary.main : '',
+            fontSize: (props) => props.isMobile ? theme.typography.h6.fontSize : theme.typography.body1.fontSize,
+            fontWeight: (props) => props.isMobile ? theme.typography.h6.fontWeight :  theme.typography.body1.fontWeight,
+ 
             position: (props) => props.isMobile ? 'initial' : 'absolute',
             paddingTop: (props) => props.isMobile ? 0 : theme.spacing(.5),
         },
@@ -141,157 +143,156 @@ function Works(props: any) {
                     <div ref={ref} />
                     <div className={classes.titleContainer}>
                         <div className={classes.title}>
-                            <WhiteTextTypography variant='h4'>EXPERIENCE</WhiteTextTypography>
+                            <GreyTextTypography variant='h4'>EXPERIENCE</GreyTextTypography>
                         </div>
                     </div>
 
                     <div className={classes.content}>
                         <div className={classes.experience}>
-                            <WhiteTextTypography className={clsx(classes.year, classes.presentYear)}>2015.11.23 - Present</WhiteTextTypography>
+                            <GreyTextTypography className={clsx(classes.year, classes.presentYear)}>2015.11.23 - Present</GreyTextTypography>
                             <div className={classes.circle}>4</div>
                             <Typography variant='h6'>Systems Developer</Typography>
-                            <WhiteTextTypography>Grundfos IS Operation Centre Philippines</WhiteTextTypography>
-                            <WhiteTextTypography variant='subtitle2'>26F Cybergate Beta Building, Topaz & Ruby Roads, Ortigas, Pasig City, Philippines</WhiteTextTypography>
-                            <WhiteTextTypography variant='body1' className={classes.summary}>
-                                Work in a scrum team to develop cloud based solutions in Azure.
-                                Building React applications and Restful API’s.
+                            <GreyTextTypography>Grundfos IS Operation Centre Philippines</GreyTextTypography>
+                            <GreyTextTypography variant='subtitle2'>26F Cybergate Beta Building, Topaz & Ruby Roads, Ortigas, Pasig City, Philippines</GreyTextTypography>
+                            <GreyTextTypography variant='body1' className={classes.summary}>
+                                Work in a scrum team to develop cloud based solutions in Azure. Design and Build React applications and Restful API’s.
                                 Work closely with QA's, consultants, project managers and project owners.
-                            </WhiteTextTypography>
+                            </GreyTextTypography>
 
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1' className={classes.items}>Designed solution to properly handle firmware updates based from pump configuration.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1' className={classes.items}>Designed solution to properly handle firmware updates based from pump configuration.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1' className={classes.items}>Successfully developed and deployed restful api's to serve pump firmwares.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1' className={classes.items}>Successfully developed and deployed restful api's to serve pump firmwares.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1' className={classes.items}>Successfully implemented a feature to secure license keys for firmwares.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1' className={classes.items}>Successfully implemented a feature to secure license keys for firmwares.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1' className={classes.items}>Assigned at company's office in Indiana, US in 2016 & 2018 for short term assignment for project handover and to continue develop and support legacy systems.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1' className={classes.items}>Assigned at company's office in Indiana, US in 2016 & 2018 for short term assignment for project handover and to continue develop and support legacy systems.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1' className={classes.items}>Assigned at company's headquarters in Denmark in 2017 & 2019 for short term assignment for project handover and to kick off new azure based projects.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1' className={classes.items}>Assigned at company's headquarters in Denmark in 2017 & 2019 for short term assignment for project handover and to kick off new azure based projects.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1' className={classes.items}>Successfully delivered projects on specified budget and with no major issues.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1' className={classes.items}>Successfully delivered projects on specified budget and with no major issues.</GreyTextTypography>
                                 </li>
                             </ul>
                         </div>
 
                         <div className={classes.experience}>
-                            <WhiteTextTypography className={clsx(classes.year, classes.previousYear)}>2014.09.15 - 2015.11.30</WhiteTextTypography>
+                            <GreyTextTypography className={clsx(classes.year, classes.previousYear)}>2014.09.15 - 2015.11.30</GreyTextTypography>
                             <div className={classes.circle}>3</div>
                             <Typography variant='h6'>Software Engineer</Typography>
-                            <WhiteTextTypography>FactSet Philippines, Inc.</WhiteTextTypography>
-                            <WhiteTextTypography variant='subtitle2'>Taguig City, Philippines </WhiteTextTypography>
-                            <WhiteTextTypography variant='body1' className={classes.summary}>
-                                Member of insfrastructure team to develop generic libraries to support other teams.
-                            </WhiteTextTypography>
+                            <GreyTextTypography>FactSet Philippines, Inc.</GreyTextTypography>
+                            <GreyTextTypography variant='subtitle2'>Taguig City, Philippines </GreyTextTypography>
+                            <GreyTextTypography variant='body1' className={classes.summary}>
+                                Member of insfrastructure team to develop generic libraries to support other development teams.
+                            </GreyTextTypography>
 
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'>Develop custom controls that can be integrated into other projects.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1'>Develop custom controls that can be integrated into other projects.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'>Successfully developed WPF MVVM projects with implementation of organization coding standards.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1'>Successfully developed WPF MVVM projects with implementation of organization coding standards.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'>Sucessfully migrated foxpro application to WPF using C#.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1'>Sucessfully migrated foxpro application to WPF using C#.</GreyTextTypography>
                                 </li>
                             </ul>
 
                         </div>
 
                         <div className={classes.experience}>
-                            <WhiteTextTypography className={clsx(classes.year, classes.previousYear)}>2012.05.28 - 2014.09.12</WhiteTextTypography>
+                            <GreyTextTypography className={clsx(classes.year, classes.previousYear)}>2012.05.28 - 2014.09.12</GreyTextTypography>
                             <div className={classes.circle}>2</div>
                             <Typography variant='h6'>Programmer/Analyst</Typography>
-                            <WhiteTextTypography>Manulife Business Processing Services</WhiteTextTypography>
-                            <WhiteTextTypography variant='subtitle2'>Quezon City, Philippines </WhiteTextTypography>
-                            <WhiteTextTypography variant='body1' className={classes.summary}>
+                            <GreyTextTypography>Manulife Business Processing Services</GreyTextTypography>
+                            <GreyTextTypography variant='subtitle2'>Quezon City, Philippines </GreyTextTypography>
+                            <GreyTextTypography variant='body1' className={classes.summary}>
                                 Work in a Team to develop and maintain existing applications. Follow coding standards and procedures on Planning, Requirements, Design, Implementation, Deployment and Maintenance.
                                 Use C#.Net and VB.Net. Windows Based and Web Based Application.
-                            </WhiteTextTypography>
+                            </GreyTextTypography>
 
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'>Successfully developed and delivered VB6 applications for clients.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1'>Successfully developed and delivered VB6 applications for clients.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'>Initiated development from VB6 to C#.Net.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1'>Initiated rewriting of projects from VB6 to C#.Net.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'>Successfully implemented coding standard for the team.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1'>Successfully implemented coding standard for the team.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'>Selected to join the group of developers to develop company's HR system to handle application process.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1'>Selected to join the group of developers to develop company's HR system to handle application process.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'>Received Top Performer Award during company's annual Performers Night event in July 2014.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1'>Received Top Performer Award during company's annual Performers Night event in July 2014.</GreyTextTypography>
                                 </li>
                             </ul>
 
                         </div>
 
                         <div className={clsx(classes.experience, classes.experienceLastItem)}>
-                            <WhiteTextTypography className={clsx(classes.year, classes.previousYear)}>2008.07.01 - 2012.04.30</WhiteTextTypography>
+                            <GreyTextTypography className={clsx(classes.year, classes.previousYear)}>2008.07.01 - 2012.04.30</GreyTextTypography>
                             <div className={clsx(classes.circle, classes.lastCircleItem)}>1</div>
                             <Typography variant='h6'>Systems Developer</Typography>
-                            <WhiteTextTypography>Kinetique Systems, Inc.</WhiteTextTypography>
-                            <WhiteTextTypography variant='subtitle2'>Davao City, Philippines </WhiteTextTypography>
-                            <WhiteTextTypography variant='body1' className={classes.summary}>
+                            <GreyTextTypography>Kinetique Systems, Inc.</GreyTextTypography>
+                            <GreyTextTypography variant='subtitle2'>Davao City, Philippines </GreyTextTypography>
+                            <GreyTextTypography variant='body1' className={classes.summary}>
                                 Develop windows-based application. Worked with a team and build libraries.
                                 Create Stored Procedure, UDF, Views, UDT, Indices and Triggers and optimize large queries.
                                 Create Reports with Crystal Reports for data presentation. Create soap web services.
-                            </WhiteTextTypography>
+                            </GreyTextTypography>
 
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'>Work with a smart/client architechture systems.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1'>Work with a smart/client architechture systems.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'>Successfully deployed ERP applications to client site.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1'>Successfully deployed ERP applications to client site.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'>Enhance sql queries performance for large transactions.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1'>Enhance sql queries performance for large transactions.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'> Work with integrated systems Inventory, POS and Accounting.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1'> Work with integrated systems Inventory, POS and Accounting.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <WhiteTextTypography variant='body1'>Successfully developed systems from specs into a working system.</WhiteTextTypography>
+                                    <GreyTextTypography variant='body1'>Successfully developed systems from specs into a working system.</GreyTextTypography>
                                 </li>
                             </ul>
 
