@@ -267,9 +267,9 @@ function Works(props: any) {
                             <GreyTextTypography>Kinetique Systems, Inc.</GreyTextTypography>
                             <GreyTextTypography variant='subtitle2'>Davao City, Philippines </GreyTextTypography>
                             <GreyTextTypography variant='body1' className={classes.summary}>
-                                Develop windows-based application. Worked with a team and build libraries.
-                                Create Stored Procedure, UDF, Views, UDT, Indices and Triggers and optimize large queries.
-                                Create Reports with Crystal Reports for data presentation. Create soap web services.
+                                Work in a team to develop end-to-end solutions. Primarily develop windows based applications using web forms. 
+                                Write team standard code and practice peer review. Create Stored Procedure, UDF, Views, UDT, Indices and Triggers and optimize large queries.
+                                Create Reports with Crystal Reports for data presentation. Develop SOAP web services.
                             </GreyTextTypography>
 
                             <ul>
