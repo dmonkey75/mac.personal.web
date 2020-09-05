@@ -4,6 +4,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Burger } from './../elements';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import logo from '../images/icon.svg';
 
 const useStyles = makeStyles(theme =>
     createStyles({
@@ -57,10 +58,25 @@ const useStyles = makeStyles(theme =>
             },
         }),
 
-        web: {
+        navbar: {
             background: `linear-gradient(0deg, rgba(16,16,16,0.4), rgba(16, 16, 16, 0.4))`,
-            padding: theme.spacing(.5), 
-              
+
+        },
+
+        container: {
+            maxWidth: '70%',
+            margin: 'auto',
+        },
+
+        web: {
+            //background: `linear-gradient(0deg, rgba(16,16,16,0.4), rgba(16, 16, 16, 0.4))`,
+            padding: theme.spacing(.5),
+
+            display: 'flex',
+            justifyContent: 'space-between',
+
+            alignItems: 'center',
+
             "& ul": {
                 display: "flex",
                 justifyContent: "flex-end",
@@ -84,6 +100,34 @@ const useStyles = makeStyles(theme =>
                 }
             }
         },
+
+        // web: {
+        //     background: `linear-gradient(0deg, rgba(16,16,16,0.4), rgba(16, 16, 16, 0.4))`,
+        //     padding: theme.spacing(.5),
+
+        //     "& ul": {
+        //         display: "flex",
+        //         justifyContent: "flex-end",
+        //         flexFlow: "row",
+        //         listStyleType: "none",
+        //         textAlign: "right",
+        //         fontWeight: 700,
+
+        //         "& li":
+        //         {
+        //             marginRight: theme.spacing(6),
+
+        //             "& a": {
+        //                 textDecoration: "none",
+        //                 color: theme.palette.primary.main,
+
+        //                 "&:hover": {
+        //                     color: theme.palette.primary.dark
+        //                 }
+        //             }
+        //         }
+        //     }
+        // },
 
         socialIcons: {
             "& >:last-child": {
@@ -109,8 +153,30 @@ function Navigation(props: any) {
                     </div>
                 }
             })()}
-
-            <nav className={navigationClass}>
+            <div className={classes.navbar}>
+                <div className={classes.container}>
+                    <nav className={navigationClass}> 
+                        <div>
+                            <img src={logo} height='40px' width='40px' />
+                        </div>
+                        <div>
+                            <ul>
+                                <li><a href="#about" onClick={() => { setToggle(!toggle) }}>ABOUT</a></li>
+                                <li><a href="#skills" onClick={() => { setToggle(!toggle) }}>SKILLS</a></li>
+                                <li><a href="#experience" onClick={() => { setToggle(!toggle) }}>EXPERIENCE</a></li>
+                                <li><a href="#contact" onClick={() => { setToggle(!toggle) }}>CONTACT</a></li>
+                                <li>
+                                    <div className={classes.socialIcons}>
+                                        <a href="https://linkedin.com/in/michaelcajandig"><FontAwesomeIcon icon={faLinkedin} size="lg" /></a>
+                                        <a href="https://github.com/dmonkey75"><FontAwesomeIcon icon={faGithub} size="lg" /></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            {/* <nav className={navigationClass}>
                 <ul>
                     <li><a href="#about" onClick={() => { setToggle(!toggle) }}>ABOUT</a></li>
                     <li><a href="#skills" onClick={() => { setToggle(!toggle) }}>SKILLS</a></li>
@@ -123,7 +189,7 @@ function Navigation(props: any) {
                         </div>
                     </li>
                 </ul>
-            </nav>
+            </nav> */}
         </div>
     );
 }

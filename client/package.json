@@ -15,8 +15,8 @@
     "react-scripts": "3.4.1",
     "typescript": "^3.7.5"
   },
-  "scripts": {
-    "start": "react-scripts start",
+  "scripts": { 
+    "start": "react-scripts start", 
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -48,7 +48,7 @@
     "email-validator": "^2.0.4",
     "react-intersection-observer": "^8.26.2"
   },
-  "proxy": "http://mac-web-nodeapp-t-azwe.azurewebsites.net:80/",
+  "proxy": "http://localhost:9000/",
   "engines": {
     "node": "10.0"
   }
