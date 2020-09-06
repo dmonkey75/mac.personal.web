@@ -185,12 +185,7 @@ function Works(props: any) {
                                 <li>
                                     <GreyTextTypography variant='body1' className={classes.items}>Assigned at company's headquarters in Denmark in 2017 & 2019 for short term assignment, project handover and to kick off new azure based projects.</GreyTextTypography>
                                 </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <GreyTextTypography variant='body1' className={classes.items}>Successfully delivered projects on specified budget and with no major issues.</GreyTextTypography>
-                                </li>
-                            </ul>
+                            </ul> 
                         </div>
 
                         <div className={classes.experience}>
@@ -210,15 +205,14 @@ function Works(props: any) {
                             </ul>
                             <ul>
                                 <li>
-                                    <GreyTextTypography variant='body1'>Successfully developed WPF MVVM projects with implementation of organization coding standards.</GreyTextTypography>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
                                     <GreyTextTypography variant='body1'>Sucessfully migrated foxpro application to WPF using C#.</GreyTextTypography>
                                 </li>
+                            </ul> 
+                            <ul>
+                                <li>
+                                    <GreyTextTypography variant='body1'>Primarily develop WPF MVVM solutions.</GreyTextTypography>
+                                </li>
                             </ul>
-
                         </div>
 
                         <div className={classes.experience}>
@@ -229,7 +223,7 @@ function Works(props: any) {
                             <GreyTextTypography variant='subtitle2'>Quezon City, Philippines </GreyTextTypography>
                             <GreyTextTypography variant='body1' className={classes.summary}>
                                 Work in a Team to develop and maintain existing applications. Follow coding standards and procedures on Planning, Requirements, Design, Implementation, Deployment and Maintenance.
-                                Use C#.Net and VB.Net. Windows Based and Web Based Application.
+                                Build small-sized solutions from ground up. Rewrite projects from VB.Net to C#.
                             </GreyTextTypography>
 
                             <ul>
@@ -239,12 +233,12 @@ function Works(props: any) {
                             </ul>
                             <ul>
                                 <li>
-                                    <GreyTextTypography variant='body1'>Initiated rewriting of projects from VB6 to C#.Net.</GreyTextTypography>
+                                    <GreyTextTypography variant='body1'>Initiated rewriting of projects from VB/VB6 to C#.Net.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <GreyTextTypography variant='body1'>Successfully implemented coding standard for the team.</GreyTextTypography>
+                                    <GreyTextTypography variant='body1'>Implemented coding standard with the team.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
@@ -267,9 +261,8 @@ function Works(props: any) {
                             <GreyTextTypography>Kinetique Systems, Inc.</GreyTextTypography>
                             <GreyTextTypography variant='subtitle2'>Davao City, Philippines </GreyTextTypography>
                             <GreyTextTypography variant='body1' className={classes.summary}>
-                                Work in a team to develop end-to-end solutions. Primarily develop windows based applications using web forms. 
-                                Write team standard code and practice peer review. Create Stored Procedure, UDF, Views, UDT, Indices and Triggers and optimize large queries.
-                                Create Reports with Crystal Reports for data presentation. Develop SOAP web services.
+                                Work in a team to develop end-to-end solutions. Build windows based applications using web forms and integrate with SOAP web services. 
+                                Follow team coding standard, best practices and peer review. Create Stored Procedure, UDF, Views, UDT, Indices, Triggers and optimize large queries. 
                             </GreyTextTypography>
 
                             <ul>
@@ -289,9 +282,14 @@ function Works(props: any) {
                             </ul>
                             <ul>
                                 <li>
-                                    <GreyTextTypography variant='body1'> Work with integrated systems Inventory, POS and Accounting.</GreyTextTypography>
+                                    <GreyTextTypography variant='body1'>Work with integrated systems Inventory, POS and Accounting.</GreyTextTypography>
                                 </li>
                             </ul>
+                            <ul>
+                                <li>
+                                    <GreyTextTypography variant='body1'>Develop reports with Crystal Reports for data presentation.</GreyTextTypography>
+                                </li>
+                            </ul> 
                             <ul>
                                 <li>
                                     <GreyTextTypography variant='body1'>Successfully developed systems from specs into a working system.</GreyTextTypography>

@@ -12,11 +12,18 @@ const useStyles = makeStyles(theme => ({
         height: '100vh',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundAttachment: 'fixed',
+        backgroundSize: 'cover',  
         position: 'relative',
         overflowX: 'hidden',
-        overflowY: 'hidden'
+        overflowY: 'hidden',
+ 
+        [theme.breakpoints.down('md')]: {
+            backgroundAttachment: 'scroll',
+        },
+
+        [theme.breakpoints.up('md')]: {
+            backgroundAttachment: 'fixed',
+        }, 
     },
 
     headline: {
