@@ -292,7 +292,7 @@ function Works(props: any) {
                             </ul> 
                             <ul>
                                 <li>
-                                    <GreyTextTypography variant='body1'>Successfully developed systems from specs into a working system.</GreyTextTypography>
+                                    <GreyTextTypography variant='body1'>Successfully developed solutions from specs into a working system.</GreyTextTypography>
                                 </li>
                             </ul>
 
