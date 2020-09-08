@@ -272,7 +272,7 @@ function Works(props: any) {
                             </ul>
                             <ul>
                                 <li>
-                                    <GreyTextTypography variant='body1'>Successfully deployed ERP applications to client site.</GreyTextTypography>
+                                    <GreyTextTypography variant='body1'>Successfully deployed ERP applications on client site.</GreyTextTypography>
                                 </li>
                             </ul>
                             <ul>
