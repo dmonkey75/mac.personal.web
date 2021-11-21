@@ -138,8 +138,7 @@ function Contact(props: any) {
         if (EmailValidator.validate(email)) {
             axios.post('/mail', {
                 email,
-                name,
-                subject: "Inquiry",
+                name, 
                 text: text
             })
 
