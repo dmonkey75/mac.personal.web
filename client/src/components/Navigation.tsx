@@ -4,12 +4,17 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Burger } from './../elements';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { ReactComponent as Logo } from '../images/icon.svg';
+import { ReactComponent as Logo } from '../images/icon.svg'; 
+import { Theme } from '@material-ui/core';
 
-const useStyles = makeStyles(theme =>
+interface IParam {
+    isToggled: boolean 
+}
+
+const useStyles = makeStyles<Theme, IParam>((theme: Theme) =>
     createStyles({
         root: {
-            background: `linear-gradient(0deg, rgba(16,16,16,0.4), rgba(16, 16, 16, 0.4))`,
+            background: `linear-gradient(0deg, rgba(16,16,16,0.4), rgba(16, 16, 16, 0.4))` 
         },
 
         burger: {
@@ -17,14 +22,14 @@ const useStyles = makeStyles(theme =>
             marginRight: theme.spacing(5),
         },
 
-        mobile: (isToggled: boolean) => ({
+        mobile: ({
             zIndex: 998,
             backgroundColor: "rgba(0,0,0, 0.9)",
             position: 'absolute',
             top: 0,
             right: 0,
             transition: '0.5s',
-            width: isToggled ? '100%' : '0',
+            width: (props) => props.isToggled ? '100%' : '0',
             overflowX: 'hidden',
             overflowY: 'hidden',
             height: '100vh',
@@ -115,14 +120,13 @@ const useStyles = makeStyles(theme =>
         }
     }));
  
-function Navigation(props: any) {
+function Navigation(props: any) { 
+    const theme = useTheme(); 
     const [toggle, setToggle] = useState(false);
-    const classes = useStyles(toggle);
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const classes = useStyles({ isToggled : toggle }); 
+    const isMobile = useMediaQuery(theme.breakpoints.down('xs')); 
     const navigationClass = isMobile ? classes.mobile : classes.web;
-
-
+ 
     return (
         <div className={classes.root}>
             <nav className={classes.container}>

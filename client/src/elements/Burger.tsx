@@ -1,8 +1,13 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles'; 
-import { IBurger } from './Interfaces';
-
-const useStyles = makeStyles(theme => (
+import { IBurger } from './Interfaces'; 
+import { Theme } from '@material-ui/core';
+ 
+interface IParam {
+    isToggled: boolean 
+}
+ 
+const useStyles = makeStyles<Theme, IParam>((theme: Theme) => (
     createStyles({
         root: {
             position: 'absolute',
@@ -11,38 +16,38 @@ const useStyles = makeStyles(theme => (
             zIndex: 999
         }, 
         
-        bar1: (isToggled: boolean) => ({
+        bar1:  ({
             width: 35,
             height: 4,
             backgroundColor: theme.palette.primary.main,
             margin: "6px 0",
             transition: "0.4s",
-            transform: isToggled ? 'rotate(-45deg) translate(-8px, 6px)' : ''
+            transform:  (props) => props.isToggled ? 'rotate(-45deg) translate(-8px, 6px)' : ''
         }),
 
-        bar2: (isToggled: boolean) => ({
+        bar2: ({
             width: 35,
             height: 4,
             backgroundColor: theme.palette.primary.main,
             margin: "6px 0",
             transition: "0.4s",
-            opacity: isToggled ? 0 : 1
+            opacity:  (props) => props.isToggled ? 0 : 1
         }),
 
-        bar3: (isToggled: boolean) => ({
+        bar3: ({
             width: 35,
             height: 4,
             backgroundColor: theme.palette.primary.main,
             margin: "6px 0",
             transition: "0.4s",
-            transform: isToggled ? 'rotate(45deg) translate(-7px, -7px)' : ''
+            transform:  (props) => props.isToggled ? 'rotate(45deg) translate(-7px, -7px)' : ''
         })
  
     })));
 
 function Burger(props: IBurger) {
 
-    const classes = useStyles(props.isToggled);
+    const classes = useStyles({ isToggled : props.isToggled });
 
     return (
         <div className={classes.root} onClickCapture={() => { props.OnClick() }}>
