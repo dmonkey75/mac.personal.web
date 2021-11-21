@@ -4,12 +4,14 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Burger } from './../elements';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { ReactComponent as Logo } from '../images/icon.svg';
+import { ReactComponent as Logo } from '../images/icon-01.svg';
 
 const useStyles = makeStyles(theme =>
     createStyles({
         root: {
             background: `linear-gradient(0deg, rgba(16,16,16,0.4), rgba(16, 16, 16, 0.4))`,
+
+            boxShadow: '0 8px 6px -6px #393939'
         },
 
         burger: {
@@ -128,7 +130,7 @@ function Navigation(props: any) {
             <nav className={classes.container}>
                 <div className={classes.logo}>
                     <a href="/"> 
-                        <Logo width='12%'/> 
+                        <Logo width='40%'/> 
                     </a> 
                 </div>
 

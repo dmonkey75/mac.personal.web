@@ -34,7 +34,9 @@ app.listen(port, () => {
   console.log(`Application is running on ${port}`)
 })
 
-app.use(express.static(path.join(__dirname, 'client/build')))
+console.log('path: ', path.join(__dirname, '../client/build'))
+
+app.use(express.static(path.join(__dirname, '../client/build')))
 
 app.use(express.json())
 
