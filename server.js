@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-//const cors = require("cors");
+const cors = require("cors");
 var path = require("path");
 
 require("dotenv").config();
@@ -14,24 +14,18 @@ app.set("port", port);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
-// app.use(cors());
-// app.use((req, res, next) => {
-//   res.append('Access-Control-Allow-Origin', ['*']);
-//   res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//   res.append('Access-Control-Allow-Headers', 'Content-Type');
-//   next();
-// });
+app.use(cors());
+app.use((req, res, next) => {
+  res.append('Access-Control-Allow-Origin', ['*']);
+  res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.append('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
 app.use(morgan("dev"));
 
 app.post("/mail", require("./routes/mail"));
-
-app.post("/test", function (req, res) {
-  var htmlData = "Hello:" + "testet";
-  res.send(htmlData);
-  console.log(htmlData);
-});
-
+ 
 app.use("/index", (req, res, next) => {
   res.render("index", {
     title: "Welcome to my Nodejs App Powered by Express",
