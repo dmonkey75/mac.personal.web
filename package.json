@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "build": "webpack",
+    "build": "webpack && cd client && npm run build && cd .. && xcopy client\\build dist\\client\\build /e/y/i",
     "prod": "node dist/server.js"
   },
   "author": "",
