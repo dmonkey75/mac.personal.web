@@ -43,6 +43,19 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+function download() {
+    fetch('Michael-Cajandig-Resume.pdf')
+        .then(response => {
+            response.blob().then(blob => {
+                let url = window.URL.createObjectURL(blob);
+                let a = document.createElement('a');
+                a.href = url;
+                a.download = 'Michael Cajandig - Resume.pdf';
+                a.click();
+            }); 
+    });
+}
+
 function Footer(props: any) {
 
     const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
@@ -65,7 +78,7 @@ function Footer(props: any) {
                 </Typography>
             </Link>
 
-            <Link className={classes.link} underline="none" onClick={() => console.log('Downloading...')} >
+            <Link className={classes.link} underline="none" onClick={() => download()} >
                 <Typography>
                     <FontAwesomeIcon className={classes.socialIcon} icon={faFileDownload} size="lg" />
                     Download Resumé

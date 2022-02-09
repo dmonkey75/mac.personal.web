@@ -43,6 +43,19 @@ const useStyles = makeStyles(theme => ({
       },
 
 }));
+ 
+function download() {
+    fetch('Michael-Cajandig-Resume.pdf')
+        .then(response => {
+            response.blob().then(blob => {
+                let url = window.URL.createObjectURL(blob);
+                let a = document.createElement('a');
+                a.href = url;
+                a.download = 'Michael Cajandig - Resume.pdf';
+                a.click();
+            }); 
+    });
+}
 
 function Hero(props: any) {
 
@@ -63,7 +76,7 @@ function Hero(props: any) {
                             WEB/API DEVELOPER
                         </Box>
                     </Typography>
-                    <Button variant="contained" size="large" color="secondary" className={classes.margin}>
+                    <Button variant="contained" size="large" color="secondary" className={classes.margin} onClick={() => download()}>
                         DOWNLOAD RESUMÉ
                     </Button>
                 </div>
